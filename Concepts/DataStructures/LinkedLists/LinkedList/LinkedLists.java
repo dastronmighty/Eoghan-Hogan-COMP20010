@@ -1,13 +1,13 @@
 
-class StringSinglyLinkedList {
+class SinglyLinkedList<E> {
 
     // Nested Node Class Shared between all instances of parent
-    private static class Node {
-        private String data; // Data stored in this node
-        private Node next; // reference to next node
+    private static class Node<E> {
+        private E data; // Data stored in this node
+        private Node<E> next; // reference to next node
 
         // node Constructor
-        public Node(String data, Node next) {
+        public Node(E data, Node<E> next) {
             this.next = next;
             this.data = data;
         }
@@ -15,30 +15,30 @@ class StringSinglyLinkedList {
         /**
          * @return the data
          */
-        public String getData() {
+        public E getData() {
             return data;
         }
 
         /**
          * @return the next
          */
-        public Node getNext() {
+        public Node<E> getNext() {
             return next;
         }
 
         /**
          * @param next the next to set
          */
-        public void setNext(Node next) {
+        public void setNext(Node<E> next) {
             this.next = next;
         }
     }
 
     private int size = 0; // the amount of elements in the list
-    private Node head = null; // the head node of the list
-    private Node tail = null; // the tail node of the list
+    private Node<E> head = null; // the head node of the list
+    private Node<E> tail = null; // the tail node of the list
 
-    public StringSinglyLinkedList() {
+    public SinglyLinkedList() {
     }
 
     /**
@@ -58,7 +58,7 @@ class StringSinglyLinkedList {
     /**
      * @return the head
      */
-    public Node first() {
+    public Node<E> first() {
         // if not empty return head
         if (isEmpty()) {
             return null;
@@ -69,7 +69,7 @@ class StringSinglyLinkedList {
     /**
      * @return the tail
      */
-    public Node last() {
+    public Node<E> last() {
         // if not empty return the tail
         if (isEmpty()) {
             return null;
@@ -80,8 +80,8 @@ class StringSinglyLinkedList {
     /**
      * @param data the new data to set
      */
-    public void addFirst(String data) {
-        head = new Node(data, head); // set class var head to a new node with head as its reference
+    public void addFirst(E data) {
+        head = new Node<E>(data, head); // set class var head to a new node with head as its reference
         if (size == 0) {
             tail = head; // set tail to head
         }
@@ -91,8 +91,8 @@ class StringSinglyLinkedList {
     /**
      * @param tail the tail to set
      */
-    public void addLast(String data) {
-        Node newNode = new Node(data, null); // create a new node with a reference to null
+    public void addLast(E data) {
+        Node<E> newNode = new Node<E>(data, null); // create a new node with a reference to null
         if (isEmpty()) {
             head = newNode;
         } else {
@@ -102,28 +102,28 @@ class StringSinglyLinkedList {
         size++; // increase size
     }
 
-    public String removeFirst() {
+    public E removeFirst() {
         if (isEmpty()) {
             return null;
         }
-        Node removed = head;
+        E removed = head.getData();
         head = head.getNext();
         size--;
         if (size == 0) {
             tail = null;
         }
-        return removed.getData();
+        return removed;
     }
 
     @Override
     public String toString() {
         if (isEmpty()) {
-            return null;
+            return "null";
         }
         String list = "";
         Node curr = head;
         while (curr.next != null) {
-            list += "[ " + curr.data + " ] -> ";
+            list += "[ " + curr.getData().toString() + " ] -> ";
             curr = curr.next;
         }
         list += "[ " + curr.data + " ] -> null";
@@ -139,7 +139,7 @@ public class LinkedLists {
 
     public static void main(String[] args) {
 
-        StringSinglyLinkedList myStringList = new StringSinglyLinkedList();
+        SinglyLinkedList<String> myStringList = new SinglyLinkedList<String>();
         System.out.println(myStringList.toString());
         myStringList.addFirst("LAX");
         System.out.println(myStringList.toString());
