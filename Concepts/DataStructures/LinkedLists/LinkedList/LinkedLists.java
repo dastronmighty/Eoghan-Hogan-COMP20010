@@ -115,6 +115,25 @@ class SinglyLinkedList<E> {
         return removed;
     }
 
+    public E removeLast() {
+        if (isEmpty()) {
+            return null;
+        } else if (size() == 1) {
+            removeFirst();
+        }
+        Node<E> temp = head;
+
+        while (temp.getNext().getNext() != null) {
+            temp = temp.getNext();
+        }
+
+        E removed = temp.getNext().getData();
+
+        temp.setNext(null);
+
+        return removed;
+    }
+
     @Override
     public String toString() {
         if (isEmpty()) {
@@ -147,11 +166,7 @@ public class LinkedLists {
         System.out.println(myStringList.toString());
         myStringList.addLast("ILS");
         System.out.println(myStringList.toString());
-        System.out.println("Removed : " + myStringList.removeFirst());
-        System.out.println(myStringList.toString());
-        System.out.println("Removed : " + myStringList.removeFirst());
-        System.out.println(myStringList.toString());
-        System.out.println("Removed : " + myStringList.removeFirst());
+        System.out.println("Removed : " + myStringList.removeLast());
         System.out.println(myStringList.toString());
         System.out.println("Removed : " + myStringList.removeFirst());
         System.out.println(myStringList.toString());
