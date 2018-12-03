@@ -24,6 +24,8 @@
 
 #### Algorithms Covered (/Concepts/Algorithms)
 
+## They all use generic types
+
 | Algorithm      | Implemented |
 | -------------- | ----------- |
 | Bubble Sort    | yes         |
