@@ -29,8 +29,20 @@
 | Bubble Sort    | yes         |
 | Merge Sort     | yes         |
 | Selection Sort | yes         |
+| Gnome Sort     | yes         |
+| Insertion Sort | yes         |
 
 ---
+
+#### Programs made (throughout repo)
+
+| Other Program         | Implemented |
+| --------------------- | ----------- |
+| Find File (Recursion) | yes         |
+| fibonacci iterative   | yes         |
+| fibonacci recursive   | yes         |
+| Student Gpa sorter    | yes         |
+| hashing functions     | yes         |
 
 ## Since tutorials/Practicals were not a requirement for the repo I have left out the practicals
 
