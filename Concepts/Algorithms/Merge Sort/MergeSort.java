@@ -1,3 +1,4 @@
+import java.lang.reflect.Array;
 import java.text.DecimalFormat;
 import java.util.*;
 
@@ -9,16 +10,15 @@ public class MergeSort {
     // Merges two subarrays of arr[].
     // First subarray is arr[l..m]
     // Second subarray is arr[m+1..r]
-    public static <T extends Comparable<T>> void merge(T[] array, int l, int m, int r) {
+    public static <T extends Comparable<? super T>> void merge(T[] array, int l, int m, int r)
+            throws ArrayStoreException {
         // Find sizes of two subarrays to be merged
         int n1 = m - l + 1;
         int n2 = r - m;
 
         /* Create temp arrays */
-
-        T L[] = new T[n1];
-
-        T R[] = new T[n2];
+        T[] L = T[n1];
+        T[] R = T[n2];
 
         /* Copy data to temp arrays */
         for (int i = 0; i < n1; ++i)
@@ -61,11 +61,10 @@ public class MergeSort {
 
     // Main function that sorts array[l..r] using
     // merge()
-    public static <T extends Comparable<T>> void mergeSort(T[] array, int l, int r) {
+    public static <T extends Comparable<? super T>> void mergeSort(T[] array, int l, int r) {
         if (l < r) {
             // Find the middle point
             int m = (l + r) / 2;
-
             // Sort first and second halves
             mergeSort(array, l, m);
             mergeSort(array, m + 1, r);

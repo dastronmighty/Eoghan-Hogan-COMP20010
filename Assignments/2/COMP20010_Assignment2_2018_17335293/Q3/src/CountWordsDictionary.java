@@ -7,6 +7,7 @@ import java.util.*;
 import java.util.Map.Entry;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.Set;
 
 public class CountWordsDictionary {
 
@@ -35,60 +36,33 @@ public class CountWordsDictionary {
 
     }
 
-    public static int countCollisions(Map<Integer, Integer> m) {
-        int collisions = 0;
-        for (Entry<Integer, Integer> ent : m.entrySet()) {
-            if (ent.getValue() > 1) {
-                collisions += ent.getValue();
-            }
-        }
-        return collisions;
-    }
-
     public static void main(String[] args) throws FileNotFoundException {
 
-        Map<Integer, Integer> poly41 = new HashMap<Integer, Integer>();
-        Map<Integer, Integer> poly17 = new HashMap<Integer, Integer>();
-        Map<Integer, Integer> shift7 = new HashMap<Integer, Integer>();
-        Map<Integer, Integer> javaHash = new HashMap<Integer, Integer>();
-
+        int[] collisions = { 0, 0, 0, 0 };
         File doc = new File("../words.txt");
 
-        Scanner docScan = new Scanner(doc).useDelimiter("[^a-zA-Z]+");
+        for (int i = 0; i < 4; i++) { // loop for each method
+            Scanner docScan = new Scanner(doc).useDelimiter("[^a-zA-Z]+");
+            Set<Integer> set = new HashSet<>();
+            set.clear();
+            while (docScan.hasNext()) {
+                String word = docScan.next();
 
-        while (docScan.hasNext()) {
-            String word = docScan.next();
+                // check which method to use
+                int code = (i == 0 ? horner(word, 41)
+                        : (i == 1 ? horner(word, 17) : (i == 2 ? cyclicShift(word) : (i == 3 ? hashCode(word) : 0))));
+                if (!set.add(code)) {
+                    collisions[i]++;
+                }
 
-            int hashed = horner(word, 41); // get hash code of word
-            Integer count = poly41.get(hashed); // get the count of how many times that hash has appeared
-            if (count == null)
-                count = 0;
-            poly41.put(hashed, 1 + count); // add 1 to the count of that unique hash
-
-            hashed = horner(word, 17);
-            count = poly17.get(hashed);
-            if (count == null)
-                count = 0;
-            poly17.put(hashed, 1 + count);
-
-            hashed = cyclicShift(word);
-            count = shift7.get(hashed);
-            if (count == null)
-                count = 0;
-            shift7.put(hashed, 1 + count);
-
-            hashed = hashCode(word);
-            count = javaHash.get(hashed);
-            if (count == null)
-                count = 0;
-            javaHash.put(hashed, 1 + count);
+            }
 
         }
 
-        System.out.printf("Collisions using polynomial evaluation with 41:\t\t%d\n", countCollisions(poly41));
-        System.out.printf("Collisions using polynomial evaluation with 17:\t\t%d\n", countCollisions(poly17));
-        System.out.printf("Collisions using a cyclic shift with 7:\t\t\t%d\n", countCollisions(shift7));
-        System.out.printf("Collisions using the old java hashCode:\t\t\t%d\n", countCollisions(javaHash));
+        System.out.printf("Collisions using polynomial evaluation with 41:\t\t%d\n", collisions[0]);
+        System.out.printf("Collisions using polynomial evaluation with 17:\t\t%d\n", collisions[1]);
+        System.out.printf("Collisions using a cyclic shift with 7:\t\t\t%d\n", collisions[2]);
+        System.out.printf("Collisions using the old java hashCode:\t\t\t%d\n", collisions[3]);
 
     }
 

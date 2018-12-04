@@ -5,6 +5,8 @@
 
 import java.lang.Comparable;
 
+import java.lang.StringBuilder;
+
 public class Student implements Comparable<Student> {
 
     private String name;
@@ -24,9 +26,36 @@ public class Student implements Comparable<Student> {
         this.GPA = GPA;
     }
 
+    /**
+     * @return the name
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * @return the age
+     */
+    public int getAge() {
+        return age;
+    }
+
+    /**
+     * @return the gPA
+     */
+    public double getGPA() {
+        return GPA;
+    }
+
     @Override
     public String toString() {
-        return "name: " + name + "\tage: " + age + "\tGPA: " + GPA;
+        StringBuilder sb = new StringBuilder();
+        sb.append(getName());
+        sb.append("\t:GPA-");
+        sb.append(getGPA());
+        sb.append(", Age-");
+        sb.append(getAge());
+        return sb.toString(); 
     }
 
     @Override

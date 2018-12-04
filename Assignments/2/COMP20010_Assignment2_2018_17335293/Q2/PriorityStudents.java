@@ -3,11 +3,10 @@
  * PriorityStudents
  */
 public class PriorityStudents {
-
     public static void main(String[] args) {
-        
+
         PriorityQueue<Student> stPriorityQueue = new PriorityQueue<Student>();
-     
+
         Student student1 = new Student("Nataly Ware", 21, 4.0);
         Student student2 = new Student("Mira Weiss", 19, 3.5);
         Student student3 = new Student("Emilie Gibbs", 20, 3.2);
@@ -34,7 +33,7 @@ public class PriorityStudents {
         stPriorityQueue.insert(student11);
         stPriorityQueue.insert(student12);
 
-        while (!stPriorityQueue.isEmpty()){
+        while (!stPriorityQueue.isEmpty()) {
             System.out.println(stPriorityQueue.removeMin().toString());
         }
 

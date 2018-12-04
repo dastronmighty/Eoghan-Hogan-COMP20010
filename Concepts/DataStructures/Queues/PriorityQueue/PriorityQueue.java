@@ -1,12 +1,9 @@
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * PriorityQueue
  */
-public
-
-class PriorityQueue<T extends Comparable<T>> implements PriorityQueueFace<T> {
+public class PriorityQueue<T extends Comparable<T>> implements PriorityQueueFace<T> {
 
     private ArrayList<T> priorityQueue;
 

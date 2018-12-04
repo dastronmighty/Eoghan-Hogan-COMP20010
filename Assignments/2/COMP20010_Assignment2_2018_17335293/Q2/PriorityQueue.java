@@ -1,11 +1,11 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
- * PriorityQueue
- */
-/**
  * Priorityqueue
+ * 
+ * implementation of a priority queue using a list
  */
 public class PriorityQueue<T extends Comparable<T>> implements PriorityQueueFace<T> {
 
@@ -28,37 +28,22 @@ public class PriorityQueue<T extends Comparable<T>> implements PriorityQueueFace
     @Override
     public void insert(T value) {
         priorityQueue.add(value);
+        Collections.sort(priorityQueue);
     }
 
     @Override
     public T min() {
-        T min = priorityQueue.get(1);
-        for (T part : priorityQueue) {
-            if (part.compareTo(min) < 0) {
-                min = part;
-            }
-        }
-        return min;
+        return priorityQueue.get(0);
     }
 
     @Override
     public T removeMin() {
-        T min = priorityQueue.get(0);
-        for (T part : priorityQueue) {
-            if (part.compareTo(min) < 0) {
-                min = part;
-            }
+        return priorityQueue.remove(0);
+    }
 
-        }
-        int index = 0;
-        for (T part : priorityQueue) {
-            if (part.compareTo(min) == 0) {
-                break;
-            }
-            index++;
-        }
-        priorityQueue.remove(index);
-        return min;
+    @Override
+    public String toString() {
+        return priorityQueue.toString();
     }
 
 }
