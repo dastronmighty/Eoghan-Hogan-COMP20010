@@ -1,7 +1,7 @@
 /**
  * PriorityQueueFace
  */
-public interface PriorityQueueFace<E> {
+public interface PriorityQueueFace<E extends Comparable<? super E>> {
     /**
      * Returns the number of items in the priority queue. *
      * 

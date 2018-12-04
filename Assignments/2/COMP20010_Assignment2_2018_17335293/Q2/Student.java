@@ -51,11 +51,11 @@ public class Student implements Comparable<Student> {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append(getName());
-        sb.append("\t:GPA-");
+        sb.append("\t:\tGPA-");
         sb.append(getGPA());
         sb.append(", Age-");
         sb.append(getAge());
-        return sb.toString(); 
+        return sb.toString();
     }
 
     @Override

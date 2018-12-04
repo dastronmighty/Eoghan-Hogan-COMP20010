@@ -10,29 +10,30 @@
 
 #### DataStructures Covered (/Concepts/DataStructures)
 
-| DataStructure          | Implemented |
-| ---------------------- | ----------- |
-| Singly Linked List     | Yes         |
-| Doubly Linked List     | Yes         |
-| Circularly Linked List | Yes         |
-| linked Stack           | yes         |
-| Array Stack            | yes         |
-| Array Queue            | yes         |
-| Deque (Stack Based)    | yes         |
-| Linked List Queue      | yes         |
-| Priority Queue         | yes         |
+| DataStructure                       | Implemented |
+| ----------------------------------- | ----------- |
+| Singly Linked List                  | Yes         |
+| Doubly Linked List                  | Yes         |
+| Circularly Linked List              | Yes         |
+| linked Stack                        | yes         |
+| Array Stack                         | yes         |
+| Array Queue                         | yes         |
+| Deque (Stack Based)                 | yes         |
+| Linked List Queue                   | yes         |
+| Priority Queue (ArrayList)          | yes         |
+| Priority Queue (Doubly Linked List) | yes         |
 
 #### Algorithms Covered (/Concepts/Algorithms)
 
 ## They all use generic types
 
-| Algorithm      | Implemented |
-| -------------- | ----------- |
-| Bubble Sort    | yes         |
-| Merge Sort     | yes         |
-| Selection Sort | yes         |
-| Gnome Sort     | yes         |
-| Insertion Sort | yes         |
+| Algorithm                      | Implemented |
+| ------------------------------ | ----------- |
+| Bubble Sort                    | yes         |
+| Merge Sort (Assignment 2 also) | yes         |
+| Selection Sort                 | yes         |
+| Gnome Sort                     | yes         |
+| Insertion Sort                 | yes         |
 
 ---
 

@@ -2,6 +2,9 @@ import java.util.ArrayList;
 
 /**
  * PriorityQueue
+ * 
+ * IMPORTANT!! There is another implementation of a queue using a linked list in
+ * Assignment 2
  */
 public class PriorityQueue<T extends Comparable<T>> implements PriorityQueueFace<T> {
 

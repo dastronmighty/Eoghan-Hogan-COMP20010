@@ -7,43 +7,39 @@ import java.util.List;
  * 
  * implementation of a priority queue using a list
  */
-public class PriorityQueue<T extends Comparable<T>> implements PriorityQueueFace<T> {
+public class PriorityQueue<E extends Comparable<E>> implements PriorityQueueFace<E> {
 
-    private ArrayList<T> priorityQueue;
+    private Queue<E> container;
 
     public PriorityQueue() {
-        priorityQueue = new ArrayList<T>();
+        this.container = new Queue<>();
     }
 
     @Override
     public int size() {
-        return priorityQueue.size();
+        return this.container.size();
+    }
+
+    @Override
+    public E min() {
+        return (E) this.container.first();
+    }
+
+    @Override
+    public E removeMin() {
+        return this.container.dequeue();
+    }
+
+    @Override
+    public void insert(E elem) {
+        this.container.enqueue(elem);
+        MergeSort.sort(this.container); // TODO It'd be way more efficient to just insert it in the right place but this
+                                        // is the way that the TA said to do it
     }
 
     @Override
     public boolean isEmpty() {
-        return size() == 0;
-    }
-
-    @Override
-    public void insert(T value) {
-        priorityQueue.add(value);
-        Collections.sort(priorityQueue);
-    }
-
-    @Override
-    public T min() {
-        return priorityQueue.get(0);
-    }
-
-    @Override
-    public T removeMin() {
-        return priorityQueue.remove(0);
-    }
-
-    @Override
-    public String toString() {
-        return priorityQueue.toString();
+        return this.container.isEmpty();
     }
 
 }
